@@ -23,7 +23,7 @@ public class Servicio extends Datos{
         System.out.println("A continuación agregue un servicio:");
         System.out.println("Ingrese un nombre: ");
         String nombree = sc.nextLine();
-        System.out.println("Ingrese el precio (x,xx): ");
+        System.out.println("Ingrese el precio (ejemplo: 12.98): ");
         Double precioo = sc.nextDouble();
         int ind = (Sistema.getServicios().size()-1);
         int codigo1 = Integer.parseInt(((Sistema.getServicios()).get(ind)).codigo);
@@ -37,9 +37,9 @@ public class Servicio extends Datos{
         boolean cond = false;
          for(Servicio s: Sistema.getServicios()){
         if(codigo != null && codigo.equals(s.codigo) ) {
-            System.out.println("Actualice el precio: ");
+            System.out.println("Actualice el precio (ejemplo: 12.98): ");
             Double precio1 = sc.nextDouble();
-            s.setPrecio( precio1);
+            s.setPrecio(precio1);
             cond = true;
         }
         }

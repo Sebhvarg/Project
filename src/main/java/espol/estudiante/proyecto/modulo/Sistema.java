@@ -6,16 +6,26 @@ import java.util.Scanner;
 public class Sistema {
     public static void comprobarUsuario(String usuario, String contrasena){
         int indice = 0;
-        for (int i = 0; i<usuarios.length; i++){
-            if(usuarios[i].nombreUsr.contains(usuario) && usuarios[i].contrasena.contains(contrasena)){
-                System.out.println("Bienvenido "+ usuarios[i].nombre + " usted ha ingresado como: "+usuarios[i].nivel);
+        for (int i = 0; i<usuarios.length; i++) {
+            if (usuarios[i].nombreUsr.equals(usuario) && usuarios[i].contrasena.equals(contrasena)) {
+                System.out.println("Bienvenido " + usuarios[i].nombre + " usted ha ingresado como: " + usuarios[i].nivel);
                 indice = i;
-            }
-        }
-        switch(usuarios[indice].nivel){
-            case "admin":
-                Admin.menuAdmin();
+                switch (usuarios[indice].nivel) {
+                    case "admin":
+                        Admin.menuAdmin();
+                        break;
+                    case "tecnico":
+                        System.out.println("soy técnico");
+                        break;
+                    case "cobranzas":
+                        System.out.println("soy cobranzas");
+                        break;
+
+                }
+            }else{
+                System.out.println("Error ha ingresado mal el usuario");
                 break;
+            }
         }
     }
     static private Usuario[] usuarios = new Usuario[4];

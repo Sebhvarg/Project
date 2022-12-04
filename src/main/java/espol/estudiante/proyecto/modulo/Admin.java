@@ -24,7 +24,7 @@ public class Admin extends Usuario {
         switch (admin_op) {
             case 1 -> administrarClientes();
             case 2 -> administrarProoveedores();
-            case 3 -> System.out.println((i + 1) + " " + "Administrar Cliente");
+            case 3 -> administrarServicios();
             case 4 -> Sistema.inicializarSistema();
         }
 
@@ -69,5 +69,28 @@ public class Admin extends Usuario {
             }
 
         }
+    }
+    public static void administrarServicios(){
+        byte aggC = 1;
+        while (aggC != 3) {
+            System.out.println("---- Servicios ----");
+            for (int i = 0; i < Sistema.getServicios().size(); i++) {
+                System.out.println(Sistema.getServicios().get(i).toString());
+            }
+            int i = 0;
+            System.out.println((i + 1) + " " + "Agregar Servicio");
+            System.out.println((i + 2) + " " + "Editar Servicio");
+            System.out.println((i + 3) + " " + "Salir");
+            byte opcAdmin = sc.nextByte();
+            if (opcAdmin == 1) {
+                Servicio.agregarServicio();
+            } else if (opcAdmin == 2) {
+                Servicio.editarServicio();
+            }else{
+                menuAdmin();
+
+            }
+        }
+
     }
 }
