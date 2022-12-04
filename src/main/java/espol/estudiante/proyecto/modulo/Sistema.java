@@ -8,14 +8,14 @@ public class Sistema {
         int indice = 0;
         for (int i = 0; i<usuarios.length; i++) {
             if (usuarios[i].nombreUsr.equals(usuario) && usuarios[i].contrasena.equals(contrasena)) {
-                System.out.println("Bienvenido " + usuarios[i].nombre + " usted ha ingresado como: " + usuarios[i].nivel);
+                System.out.println("Bienvenido " + usuarios[i].getNombreUsr() + " usted ha ingresado como: " + usuarios[i].nivel);
                 indice = i;
                 switch (usuarios[indice].nivel) {
                     case "admin":
                         Admin.menuAdmin();
                         break;
                     case "tecnico":
-                        System.out.println("soy técnico");
+                        Tecnico.menuTecnico();
                         break;
                     case "cobranzas":
                         System.out.println("soy cobranzas");
@@ -23,8 +23,8 @@ public class Sistema {
 
                 }
             }else{
-                System.out.println("Error ha ingresado mal el usuario");
-                break;
+               /* System.out.println("Error ha ingresado mal el usuario");
+                break;*/
             }
         }
     }
@@ -79,5 +79,7 @@ public class Sistema {
 
     public static ArrayList<Proveedor> getProveedores() {
         return proveedores;
-    }  
+    }
+
+    public static ArrayList<Orden> getOrdenes() {return ordenes;}
 }
