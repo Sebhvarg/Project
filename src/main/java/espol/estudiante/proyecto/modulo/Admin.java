@@ -54,8 +54,8 @@ public class Admin extends Usuario {
         byte aggC = 1;
         while (aggC != 2) {
             System.out.println("---- Proveedores ----");
-            for (int i = 0; i < Sistema.getProoveedores().size(); i++) {
-                System.out.println(Sistema.getProoveedores().get(i).toString());
+            for (int i = 0; i < Sistema.getProveedores().size(); i++) {
+                System.out.println(Sistema.getProveedores().get(i).toString());
             }
             int i = 0;
             System.out.println((i + 1) + " " + "Agregar Proveedor");
