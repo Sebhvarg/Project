@@ -11,4 +11,5 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>espol.estudiante.proyecto.Proyecto</exec.mainClass>
     </properties>
+    <name>Proyecto2</name>
 </project>

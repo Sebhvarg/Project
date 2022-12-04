@@ -28,6 +28,7 @@ public class Sistema {
             }
         }
     }
+    //creacion de los arreglos que estaran al inicializar el sistema
     static private Usuario[] usuarios = new Usuario[4];
     static private ArrayList<Cliente> clientes = new ArrayList<>();
     static private ArrayList<Servicio> servicios = new ArrayList<>();
@@ -35,6 +36,8 @@ public class Sistema {
     static private ArrayList<Orden> ordenes = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void inicializarSistema(){
+    // Agrega los objetos que estaran en las respectivas listas al inicializar el sistema   
+        //USUARIOS
         usuarios[0] = new Admin("admin1","12345678","Administrador","admin");
         usuarios[1]=(new Tecnico("alopez","al123456","Alvaro Lopez","tecnico"));
         usuarios[2]=(new Cobranza("mcastro","mc123456","Maria Castro","cobranzas"));
@@ -64,7 +67,7 @@ public class Sistema {
         System.out.println("*****************************************************");
         comprobarUsuario(usr, password);
     }
-
+//getters para utilizar los arrays en las otras clases
     public static Usuario[] getUsuarios() {
         return usuarios;
     }

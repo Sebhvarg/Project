@@ -13,7 +13,7 @@ public class Tecnico extends Usuario {
     public static void menuTecnico() {
         System.out.println("---- Menú del Técnico ----");
         int i = 0;
-        System.out.println((i + 1) + " " + "Generar Orden de servicios");
+        System.out.println((i + 1) + " " + "Generar Orden de servicios"); //opciones que tiene el usuario
         System.out.println((i + 2) + " " + "Reportar falta");
         System.out.println((i + 3) + " " + "Salir");
 
@@ -21,8 +21,8 @@ public class Tecnico extends Usuario {
         System.out.println("Selecione una opción: ");
         byte tecnico_op = sc.nextByte();
         switch (tecnico_op) {
-            case 1 -> generarOrdenDeServicios();
-            case 2 -> reportarFaltaInsumos();
+            case 1 -> generarOrdenDeServicios(); //metodos que se van a ejecutar segun el caso que elija el usuario
+            case 2 -> reportarFaltaInsumos(); //llamada a los metodos estaticos.
             case 3 -> Sistema.inicializarSistema();
         }
 
@@ -32,13 +32,13 @@ public class Tecnico extends Usuario {
 
         System.out.println("---- Generar orden de servicios ----");
 
-        for (int i = 0; i < Sistema.getClientes().size(); i++) {
-            System.out.println(Sistema.getClientes().get(i).toString());
+        for (int i = 0; i < Sistema.getClientes().size(); i++) { //recorremos la lista para imprimir todos objetos dentro del Arraylist clientes
+            System.out.println(Sistema.getClientes().get(i).toString()); //metodo toString para visualizar la informacion de cada objeto
         }
-        System.out.println("Ingrese código de cliente: ");
+        System.out.println("Ingrese código de cliente: "); // solicitud de codigo al usuario
         String codigoCliente = sc.nextLine();
         for (Cliente c: Sistema.getClientes()){
-            if(codigoCliente.equals(c.codigo)){
+            if(codigoCliente.equals(c.codigo)){ //recorremos la lista y verificamos si el codigo ingresado esta presente en la lista clientes
                 System.out.println("Ingrese fecha de servicio (dd/mm/aaaa): ");
                 String fecha = sc.nextLine();
                 System.out.println("Ingrese tipo de vehículo (Solo el número) (1- automóvil, 2 motocicletas, 3- bus): ");
@@ -61,7 +61,7 @@ public class Tecnico extends Usuario {
 
 
             }else{
-                System.out.println("Error - Código de cliente inexistente");
+                System.out.println("Error - Código de cliente inexistente"); //si el codigo no exsite le da error y lo regresa al menu
                 menuTecnico();
 
             }
