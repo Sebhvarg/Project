@@ -9,7 +9,7 @@ public class Sistema {
     static private Usuario[] usuarios = new Usuario[4];
     static private ArrayList<Cliente> clientes = new ArrayList<>();
     static private ArrayList<Servicio> servicios = new ArrayList<>();
-    static private ArrayList<Proveedor> prooveedores = new ArrayList<>();
+    static private ArrayList<Proveedor> proveedores = new ArrayList<>();
     static private ArrayList<Orden> ordenes = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     public static void inicializarSistema(){
@@ -27,10 +27,29 @@ public class Sistema {
         //CLIENTES
         clientes.add(new Cliente("123", "Ashley Veintimilla", "Isla Trinitaria","098 669 8551", "empresarial"));
         clientes.add(new Cliente("124", "Ana Cobos", "Guasmo Sur","096 290 1765", "personal"));
+    
+        //SERVICIOS
+        servicios.add(new Servicio("100", "compra insumos",400.04));
+        servicios.add(new Servicio("101", "compra materiales",300.0));
+        servicios.add(new Servicio("102", "arreglo de vehiculo",460.0));
+        servicios.add(new Servicio("103", "mantenimiento de vehiculo",200.0));
+        servicios.add(new Servicio("104", "cambio de aceite",100.03));
+        servicios.add(new Servicio("105", "compra respuestos",50.02));
+        
+        //PROVEEDORES
+        proveedores.add(new Proveedor("200","Jahir Castilo","Estero Salado","0923476296"));
+        proveedores.add(new Proveedor("201","Alexander Diaz", "Socio Vivienda", "0965577735"));
     }    
 
     public static ArrayList<Cliente> getClientes() {
         return clientes;
     }
     
+    public static ArrayList<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public static ArrayList<Proveedor> getProveedores() {
+        return proveedores;
+    }  
 }
