@@ -6,7 +6,7 @@ public class Proveedor extends Datos {
     private String direccion;
     private String telefono;
 
-    public Proveedor(String direccion, String telefono, String nombre, String codigo) {
+    public Proveedor(String codigo, String nombre,String direccion, String telefono) {
         super(nombre, codigo);
         this.direccion = direccion;
         this.telefono = telefono;
@@ -25,4 +25,10 @@ public class Proveedor extends Datos {
         String codigoo = String.valueOf(codigo1+1);
         Sistema.getProveedores().add(new Proveedor(codigoo,nombree, direccionn, telefonoo));       
 }
+
+    @Override
+    public String toString() {
+        return super.toString()+  ", direccion=" + direccion + ", telefono=" + telefono;
+    }
+    
 }

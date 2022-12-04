@@ -16,11 +16,13 @@ public class Cliente extends Datos {
 
     @Override
     public String toString() {
-        return super.toString()+  ", direccion=" + direccion + ", telefono=" + telefono + "tipo=" + tipo;
+        return super.toString()+  ", direccion=" + direccion + ", telefono=" + telefono + " tipo=" + tipo;
     }
     static Scanner sc = new Scanner(System.in);
     public static void agregarCliente(){
+        Scanner sc = new Scanner(System.in);
         System.out.println("A continuación agregue un Cliente:");
+
         System.out.println("Ingrese un nombre: ");
         String nombree = sc.nextLine();
         System.out.println("Ingrese una dirección: ");
@@ -35,4 +37,6 @@ public class Cliente extends Datos {
         Sistema.getClientes().add(new Cliente(codigoo,nombree, direccionn, telefonoo, tipoCliente));
         
         } 
-}
+
+    }
+

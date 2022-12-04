@@ -10,7 +10,7 @@ public class Datos {
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", codigo=" + codigo;
+        return "codigo=" + codigo + ", nombre=" + nombre ;
     }
 
     
