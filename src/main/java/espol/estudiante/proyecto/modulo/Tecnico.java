@@ -6,9 +6,9 @@ import static espol.estudiante.proyecto.modulo.Admin.administrarProoveedores;
 import static espol.estudiante.proyecto.modulo.Admin.sc;
 
 public class Tecnico extends Usuario {
-    public Tecnico(String nombreUsr, String contrasena, String nombre, String nivel){
-    super(nombreUsr, contrasena, nombre, nivel);
-  }
+    public Tecnico(String nombreUsr, String contrasena, String nombre, String nivel) {
+        super(nombreUsr, contrasena, nombre, nivel);
+    }
 
     public static void menuTecnico() {
         System.out.println("---- Menú del Técnico ----");
@@ -27,9 +27,9 @@ public class Tecnico extends Usuario {
         }
 
 
-
     }
-    public static void generarOrdenDeServicios(){
+
+    public static void generarOrdenDeServicios() {
 
         System.out.println("---- Generar orden de servicios ----");
         Scanner sc = new Scanner(System.in);
@@ -40,59 +40,58 @@ public class Tecnico extends Usuario {
         System.out.println("Ingrese código de cliente: "); // solicitud de codigo al usuario
         String codigoCliente = sc.nextLine();
 
-        for (Cliente c: Sistema.getClientes()){
-            if(c.getCodigo().equals(codigoCliente)){ //recorremos la lista y verificamos si el codigo ingresado esta presente en la lista clientes
+        for (Cliente c : Sistema.getClientes()) {
+            System.out.println(c.getCodigo() + c.getNombre());
+            if (c.getCodigo().equals(codigoCliente)) { //recorremos la lista y verificamos si el codigo ingresado esta presente en la lista clientes
                 System.out.println("Ingrese fecha de servicio (dd-mm-aaaa): ");
                 String fecha = sc.nextLine();
                 System.out.println("Ingrese tipo de vehículo (Solo el número) (1- automóvil, 2 motocicletas, 3- bus): ");
                 String tipo = sc.nextLine();
-                switch(tipo){
+
+
+                switch (tipo) {
                     case "1" -> tipo = "automóvil";
                     case "2" -> tipo = "motocicleta";
                     case "3" -> tipo = "bus";
                 }
+
+
                 System.out.println("Ingrese #Placa Del Vehículo: ");
                 String placa = sc.nextLine();
                 System.out.println("--- Servicios aplicados en el vehiculo: ---");
                 for (int i = 0; i < Sistema.getServicios().size(); i++) {
                     System.out.println(Sistema.getServicios().get(i).toString());
                 }
-                byte cond = 0;
-                while (cond == 0){
+                String cond = "0";
+                while (cond.equals("0")) {
                     System.out.println("Ingrese el codigo del servicio:");
 
                     String codigoServicio = sc.nextLine();
                     System.out.println("Si desea seguir agregando servicios pulse 0 \n Si ha terminado de agregar escriba -1");
-                    cond = sc.nextByte();
+                    cond = sc.nextLine();
+
                 }
-                Sistema.getOrdenes().add( new Orden(codigoCliente, fecha, tipo, placa, "h"));
-
-                break;
-
-            }else{
-                System.out.println("Error - Código de cliente inexistente"); //si el codigo no exsite le da error y lo regresa al menu
-                menuTecnico();
+                Sistema.getOrdenes().add(new Orden(codigoCliente, fecha, tipo, placa, "h"));
 
             }
+
+        }
+
+        }
+
+
+        public static void reportarFaltaInsumos () {
+            System.out.println("---- Reportar faltas de insumos ---- \n --Correo--");
+            System.out.println("Fecha (dd-mm-aaaa): ");
+            String fecha = sc.nextLine();
+            System.out.println("Para: " + Reporte.getCorreo());
+            System.out.println("Descripción: ");
+            String descripcion = sc.nextLine();
+            System.out.println("---- Correo enviado correctamente ----");
+            menuTecnico();
+
+
         }
 
     }
-    public static void reportarFaltaInsumos(){
-        System.out.println("---- Reportar faltas de insumos ---- \n --Correo--");
-        System.out.println("Fecha (dd-mm-aaaa): ");
-        String fecha = sc.nextLine();
-        System.out.println("Para: "+ Reporte.getCorreo());
-        System.out.println("Descripción: ");
-        String descripcion = sc.nextLine();
-        System.out.println("---- Correo enviado correctamente ----");
-        menuTecnico();
 
-
-
-
-
-
-    }
-
-
-}
