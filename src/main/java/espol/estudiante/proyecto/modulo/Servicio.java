@@ -49,4 +49,8 @@ public class Servicio extends Datos{
             administrarServicios();
      }
     }
+
+    public Double getPrecio() {
+        return precio;
+    }
 }

@@ -43,19 +43,19 @@ public class Sistema {
         usuarios[2]=(new Cobranza("mcastro","mc123456","Maria Castro","cobranzas"));
         usuarios[3]=(new Tecnico("mbarcos","mb123456","Mario Barcos","tecnico"));
         //CLIENTES
-        clientes.add(new Cliente("123", "Ashley Veintimilla", "Isla Trinitaria","098 669 8551", "personal"));
+        clientes.add(new Cliente("123", "Ashley Veintimilla", "Isla Trinitaria","097 009 8527", "personal"));
         clientes.add(new Cliente("124", "Grupo HG S.A", "Juan Tanca Marengo","096 290 1765", "empresarial"));
     
         //SERVICIOS
-        servicios.add(new Servicio("100", "compra insumos",400.04));
-        servicios.add(new Servicio("101", "compra materiales",300.0));
-        servicios.add(new Servicio("102", "arreglo de vehiculo",460.0));
-        servicios.add(new Servicio("103", "mantenimiento de vehiculo",200.0));
-        servicios.add(new Servicio("104", "cambio de aceite",100.03));
-        servicios.add(new Servicio("105", "compra respuestos",50.02));
-        
-        
+        servicios.add(new Servicio("100", "alineación",25.00));
+        servicios.add(new Servicio("101", "balanceo",15.00));
+        servicios.add(new Servicio("102", "mantenimiento de frenos",40.00));
+        servicios.add(new Servicio("103", "cambio de llantas",15.00));
+        servicios.add(new Servicio("104", "cambio de banda",20.00));
+        servicios.add(new Servicio("105", "cambio respuestos",50.00));
 
+        //ORDENES
+        ordenes.add(new Orden(clientes.get(1).codigo, "14-11-2022",clientes.get(1).getTipo(),"GTH-9899","j" ));
         //PROOVEEDORES
         proveedores.add(new Proveedor("9877", "KIA", "Cuenca", "052771203"));
         proveedores.add(new Proveedor("9866", "Chevrolet", "Guayaquil", "05270878"));

@@ -27,19 +27,22 @@ public class Tecnico extends Usuario {
         }
 
 
+
     }
     public static void generarOrdenDeServicios(){
 
         System.out.println("---- Generar orden de servicios ----");
+        Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < Sistema.getClientes().size(); i++) { //recorremos la lista para imprimir todos objetos dentro del Arraylist clientes
             System.out.println(Sistema.getClientes().get(i).toString()); //metodo toString para visualizar la informacion de cada objeto
         }
         System.out.println("Ingrese código de cliente: "); // solicitud de codigo al usuario
         String codigoCliente = sc.nextLine();
+
         for (Cliente c: Sistema.getClientes()){
-            if(codigoCliente.equals(c.codigo)){ //recorremos la lista y verificamos si el codigo ingresado esta presente en la lista clientes
-                System.out.println("Ingrese fecha de servicio (dd/mm/aaaa): ");
+            if(c.getCodigo().equals(codigoCliente)){ //recorremos la lista y verificamos si el codigo ingresado esta presente en la lista clientes
+                System.out.println("Ingrese fecha de servicio (dd-mm-aaaa): ");
                 String fecha = sc.nextLine();
                 System.out.println("Ingrese tipo de vehículo (Solo el número) (1- automóvil, 2 motocicletas, 3- bus): ");
                 String tipo = sc.nextLine();
@@ -58,11 +61,11 @@ public class Tecnico extends Usuario {
                 while (cond == 0){
                     System.out.println("Ingrese el codigo del servicio:");
 
-                    int codigoServicio = sc.nextInt();
+                    String codigoServicio = sc.nextLine();
                     System.out.println("Si desea seguir agregando servicios pulse 0 \n Si ha terminado de agregar escriba -1");
                     cond = sc.nextByte();
-
                 }
+                Sistema.getOrdenes().add( new Orden(codigoCliente, fecha, tipo, placa, "h"));
 
                 break;
 
@@ -75,12 +78,14 @@ public class Tecnico extends Usuario {
 
     }
     public static void reportarFaltaInsumos(){
-        System.out.println("---- Reportar faltas de insumos ---- \n --Correo-- \n De:"+ Usuario.getNombre());
-        System.out.println("Fecha (dd/mm/aaaa): ");
+        System.out.println("---- Reportar faltas de insumos ---- \n --Correo--");
+        System.out.println("Fecha (dd-mm-aaaa): ");
         String fecha = sc.nextLine();
         System.out.println("Para: "+ Reporte.getCorreo());
         System.out.println("Descripción: ");
         String descripcion = sc.nextLine();
+        System.out.println("---- Correo enviado correctamente ----");
+        menuTecnico();
 
 
 

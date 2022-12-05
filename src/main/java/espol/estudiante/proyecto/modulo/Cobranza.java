@@ -41,14 +41,37 @@ public class Cobranza extends Usuario {
         }
         System.out.println("Ingrese el código de un cliente: ");
         String codigo = sc.nextLine();
+        System.out.println("Ingrese el año de la orden (aaaa) : ");
+        String anio = sc.nextLine();
+        System.out.println("Ingrese el mes de la orden (mm): ");
+        String mes = sc.nextLine();
+        switch (mes){
+            case "01" -> mes = "Enero";
+            case "02" -> mes = "Febrero";
+            case "03" -> mes = "Marzo";
+            case "04" -> mes = "Abril";
+            case "05" -> mes = "Mayo";
+            case "06" -> mes = "Junio";
+            case "07" -> mes = "Julio";
+            case "08" -> mes = "Agosto";
+            case "09" -> mes = "Septiembre";
+            case "10" -> mes = "Octubre";
+            case "11" -> mes = "Noviembre";
+            case "12" -> mes = "Diciembre";
+        }
 
 
         for (Cliente c: Sistema.getClientes()) {
 
             if (codigo.equals(c.codigo)) {
 
-                System.out.println("--- Factura --- \n Empresa: " +  c.getNombre()+"\n Período de facturación: "+ "\n Detalle Servicios:");
+                System.out.println("--- Factura --- \n Empresa: " +  c.getNombre()+"\n Período de facturación:"+ mes+ " " + anio+ "\n Detalle Servicios:");
                 System.out.println("#Placa      Fecha       Tipo        Servicio        Cantidad        Total");
+                for (Orden o: Sistema.getOrdenes()){
+                    if(codigo.equals(o.getCodigoCliente())){
+                        System.out.println(o.getPlaca()+ "  " + o.getFechaDeServicio()+ o.getTipo() + "Sí"+ "gh"+ "h");
+                    }
+                }
                 break;
 
             }
@@ -57,9 +80,19 @@ public class Cobranza extends Usuario {
 
     }
     public static void  reporteIngresosPorServicios(){
+        System.out.println("Servicio                         Total");
+        for (Servicio s : Sistema.getServicios()){
+            System.out.println(s.getNombre());
+        }
 
     }
     public static void reporteAtencionesTecnicos(){
+        System.out.println("Técnico                         Total");
+        for (Usuario u : Sistema.getUsuarios()){
+            if (u.getNivel().equals("tecnico")){
+                System.out.println(u.getNombre());
+            }
+        }
 
     }
 }
