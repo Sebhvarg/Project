@@ -36,7 +36,11 @@ public class Cliente extends Datos {
         String codigoo = String.valueOf(codigo1+1); //para poder realizar la suma y generar el nuevo codigo en base al anterior, y lo vuelvo a transformar a string.
         Sistema.getClientes().add(new Cliente(codigoo,nombree, direccionn, telefonoo, tipoCliente)); //agrego el nuevo objeto cliente al arrayList clientes.
         
-        } 
+        }
 
+    public String getTipo() {
+        return tipo;
     }
+
+}
 

@@ -13,9 +13,11 @@ public class Datos {
         return "codigo=" + codigo + ", nombre=" + nombre ;
     }
 
-    
-    
-    
-    
-    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
 }

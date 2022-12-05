@@ -18,7 +18,7 @@ public class Sistema {
                         Tecnico.menuTecnico();
                         break;
                     case "cobranzas":
-                        System.out.println("soy cobranzas");
+                        Cobranza.menuCobranza();
                         break;
 
                 }
@@ -43,8 +43,8 @@ public class Sistema {
         usuarios[2]=(new Cobranza("mcastro","mc123456","Maria Castro","cobranzas"));
         usuarios[3]=(new Tecnico("mbarcos","mb123456","Mario Barcos","tecnico"));
         //CLIENTES
-        clientes.add(new Cliente("123", "Ashley Veintimilla", "Isla Trinitaria","098 669 8551", "empresarial"));
-        clientes.add(new Cliente("124", "Ana Cobos", "Guasmo Sur","096 290 1765", "personal"));
+        clientes.add(new Cliente("123", "Ashley Veintimilla", "Isla Trinitaria","098 669 8551", "personal"));
+        clientes.add(new Cliente("124", "Grupo HG S.A", "Juan Tanca Marengo","096 290 1765", "empresarial"));
     
         //SERVICIOS
         servicios.add(new Servicio("100", "compra insumos",400.04));

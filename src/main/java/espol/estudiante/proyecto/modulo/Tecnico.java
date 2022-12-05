@@ -43,6 +43,11 @@ public class Tecnico extends Usuario {
                 String fecha = sc.nextLine();
                 System.out.println("Ingrese tipo de vehículo (Solo el número) (1- automóvil, 2 motocicletas, 3- bus): ");
                 String tipo = sc.nextLine();
+                switch(tipo){
+                    case "1" -> tipo = "automóvil";
+                    case "2" -> tipo = "motocicleta";
+                    case "3" -> tipo = "bus";
+                }
                 System.out.println("Ingrese #Placa Del Vehículo: ");
                 String placa = sc.nextLine();
                 System.out.println("--- Servicios aplicados en el vehiculo: ---");
@@ -52,13 +57,14 @@ public class Tecnico extends Usuario {
                 byte cond = 0;
                 while (cond == 0){
                     System.out.println("Ingrese el codigo del servicio:");
+
                     int codigoServicio = sc.nextInt();
+                    System.out.println("Si desea seguir agregando servicios pulse 0 \n Si ha terminado de agregar escriba -1");
+                    cond = sc.nextByte();
 
                 }
 
                 break;
-
-
 
             }else{
                 System.out.println("Error - Código de cliente inexistente"); //si el codigo no exsite le da error y lo regresa al menu
