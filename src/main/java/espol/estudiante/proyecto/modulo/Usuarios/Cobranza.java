@@ -42,14 +42,14 @@ public class Cobranza extends Usuario {
         for (Cliente c : Sistema.getClientes() ) {
             if (c.getTipo() ==  "empresarial" ) {
                 System.out.println(c.getCodigo() + " - " + c.getNombre());
-            }
+            }//Se recorre la lista de clientes y se verifica que cumplan con el tipo Empresarial
         }
         System.out.println("Ingrese el código de un cliente: ");
         String codigo = sc.nextLine();
         System.out.println("Ingrese el año de la orden (aaaa) : ");
         String anio = sc.nextLine();
         System.out.println("Ingrese el mes de la orden (mm): ");
-        String mes = sc.nextLine();
+        String mes = sc.nextLine();//Se piden los datos de la orden
         String mesN = "";
         switch (mes){
             case "01" -> mesN = "Enero";
@@ -65,18 +65,18 @@ public class Cobranza extends Usuario {
             case "11" -> mesN = "Noviembre";
             case "12" -> mesN = "Diciembre";
         }
-        double total = 0.0;
+        double total = 0.0;//Generamos un switch para representar los meses
 
         for (Cliente c: Sistema.getClientes()) {
 
             if (codigo.equals(c.codigo)) {
 
                 System.out.println("--- Factura --- \n Empresa: " +  c.getNombre()+"\n Período de facturación:"+ mesN+ " " + anio+ "\n Detalle Servicios:");
-                System.out.println("#Placa      Fecha       Tipo        Servicio        Cantidad        Total");
+                System.out.println("#Placa      Fecha       Tipo        Servicio        Cantidad        Total");//Recorremos los datos de la factura segun el cliente
                 for (Orden o: Sistema.getOrdenes()){
                     if(codigo.equals(o.getCodigoCliente()) && o.getFechaDeServicio().contains(mes+"-"+anio)){
-                        System.out.println(o.getPlaca()+ "  " + o.getFechaDeServicio()+"  "+ o.getTipo() + "     "+o.getService()+"    "+ 1+ "           "+o.getPrecio());
-                        total = total+o.getPrecio();
+                        System.out.println(o.getPlaca()+ "  " + o.getFechaDeServicio()+"  "+ o.getTipo() + "     "+o.getService()+"    "+ 1+ "           "+o.getPrecio());//Recorremos las ordenes escogiendo la ingresada y aplicando un contains para la fecha
+                        total = total+o.getPrecio();//Actuliza el precio total
                     }
 
                 }
@@ -91,17 +91,18 @@ public class Cobranza extends Usuario {
 
     }
     public static void  reporteIngresosPorServicios(){
+        Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el año de la orden (aaaa) : ");
         String anio = sc.nextLine();
         System.out.println("Ingrese el mes de la orden (mm): ");
         String mes = sc.nextLine();
         System.out.println("Servicio                         Total");
-        double precio1T = 0.0;
+        double precio1T = 0.0;//Input y formateo del reporte
 
         for (Servicio s: Sistema.getServicios()) {
             for (Orden o: Sistema.getOrdenes()){
-                if(o.getService().equals(s.getNombre()) && o.getFechaDeServicio().contains(mes+"-"+anio) && (o.getTipo().equals("personal")|| o.getTipo().equals("empresarial"))){
-                    precio1T = precio1T + o.getPrecio();
+                if(o.getService().equals(s.getNombre()) && o.getFechaDeServicio().contains(mes+"-"+anio) && (o.getTipo().equals("personal")|| o.getTipo().equals("empresarial"))){//Para cada servicio tiene que cumplir con el servicio ingresado y que sea de tipo personal y empresarial para asi obviar al de tipo tecnico
+                    precio1T = precio1T + o.getPrecio();//actualiza precio total
                 }
             }
             System.out.println(s.getNombre() + "            "+ "$"+precio1T  );
@@ -109,27 +110,28 @@ public class Cobranza extends Usuario {
         }
         System.out.println("--- Haga click para continuar");
         sc.nextLine();
-        menuCobranza();
+        menuCobranza();//se ejecutara segun la opcion que elija el usuario
     }
     public static void reporteAtencionesTecnicos(){
+        Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el año de la orden (aaaa) : ");
         String anio = sc.nextLine();
         System.out.println("Ingrese el mes de la orden (mm): ");
         String mes = sc.nextLine();
         System.out.println("Técnico                         Total");
         double precio1T = 0.0;
-        double precio2T = 0.0;
+        double precio2T = 0.0;//Se piden datos del tecnico por consultar
         for (Orden o: Sistema.getOrdenes())
             if(o.getCodigoCliente().equals(Sistema.getUsuarios()[1].getNombre()) && o.getFechaDeServicio().contains(mes+"-"+anio)){
                 precio1T = precio1T+o.getPrecio();
             }else if(o.getCodigoCliente().equals(Sistema.getUsuarios()[3].getNombre()) && o.getFechaDeServicio().contains(mes+"-"+anio)){
                 precio2T = precio2T+o.getPrecio();
-            }
+            }//segun la orden primero se verifica a cada tecnico y se condicina el mes orden para asi sumarla al total de cada tecnico 
         System.out.println(Sistema.getUsuarios()[1].getNombre() + "                     "+precio1T);
-        System.out.println(Sistema.getUsuarios()[3].getNombre() + "                     "+precio2T);
+        System.out.println(Sistema.getUsuarios()[3].getNombre() + "                     "+precio2T);//imprime los totales para cada tecnico
         System.out.println("--- Haga click para continuar");
         sc.nextLine();
-        menuCobranza();
+        menuCobranza();//se ejecutara segun la opcion que elija el usuario
 
     }
 }
