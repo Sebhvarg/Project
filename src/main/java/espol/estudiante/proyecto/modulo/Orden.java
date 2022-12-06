@@ -43,4 +43,12 @@ public class Orden{
     public double getPrecio(){
         return precio;
     }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 }

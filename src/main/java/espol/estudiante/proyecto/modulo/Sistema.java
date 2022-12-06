@@ -4,11 +4,14 @@ import espol.estudiante.proyecto.modulo.Admin.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Sistema {
+    static private String usr;
     public static void comprobarUsuario(String usuario, String contrasena){
         int indice = 0;
+
         for (int i = 0; i<usuarios.length; i++) {
             if (usuarios[i].nombreUsr.equals(usuario) && usuarios[i].contrasena.equals(contrasena)) {
                 System.out.println("Bienvenido " + usuarios[i].getNombreUsr() + " usted ha ingresado como: " + usuarios[i].nivel);
+                usr = usuarios[i].getNombreUsr();
                 indice = i;
                 switch (usuarios[indice].nivel) {
                     case "admin":
@@ -92,4 +95,8 @@ public class Sistema {
     }
 
     public static ArrayList<Orden> getOrdenes() {return ordenes;}
+    public static String getUsr(){
+        return usr;
+    }
+
 }

@@ -70,6 +70,11 @@ public class Tecnico extends Usuario {
                         }
                     }
                     Sistema.getOrdenes().add(new Orden(codigoCliente, fecha, tipo, placa, codigoServicio, precio));
+                    if(Sistema.getUsr() == "alopez"){
+                        Sistema.getOrdenes().get(0).setPrecio(Sistema.getOrdenes().get(0).getPrecio()+precio);
+                    } else if (Sistema.getUsr() == "mbarcos") {
+                        Sistema.getOrdenes().get(1).setPrecio(Sistema.getOrdenes().get(1).getPrecio()+precio);
+                    }
                     System.out.println("---- Servicio agregado correctamente ----:");
                     System.out.println("Servicio de:"+ codigoServicio+" - "+ "$"+precio);
                     System.out.println("Si desea seguir agregando servicios pulse 0 \n Si ha terminado de agregar escriba -1");
@@ -87,10 +92,10 @@ public class Tecnico extends Usuario {
 
 
         public static void reportarFaltaInsumos () {
-            System.out.println("---- Reportar faltas de insumos ---- \n --Correo--");
+            System.out.println("---- Reportar faltas de insumos ---- \n --Correo-- ");
             System.out.println("Fecha (dd-mm-aaaa): ");
             String fecha = sc.nextLine();
-            System.out.println("Para: " + Reporte.getCorreo());
+            System.out.println("De:" + Sistema.getUsr()+ "\n Para: " + Reporte.getCorreo());
             System.out.println("Descripción: ");
             String descripcion = sc.nextLine();
             System.out.println("---- Correo enviado correctamente ----");
