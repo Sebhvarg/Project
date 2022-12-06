@@ -10,12 +10,15 @@ public class Orden{
     private String placa;
     private String service;
 
-    public Orden(String codigoCliente, String fechaDeServicio, String tipo, String placa, String service) {
+    private double precio;
+
+    public Orden(String codigoCliente, String fechaDeServicio, String tipo, String placa, String service, double precio) {
         this.codigoCliente = codigoCliente;
         this.fechaDeServicio = fechaDeServicio;
         this.tipo = tipo;
         this.placa = placa;
         this.service = service;
+        this.precio = precio;
     }
 
     public String getCodigoCliente() {
@@ -36,5 +39,8 @@ public class Orden{
 
     public String getService() {
         return service;
+    }
+    public double getPrecio(){
+        return precio;
     }
 }

@@ -53,9 +53,16 @@ public class Sistema {
         servicios.add(new Servicio("103", "cambio de llantas",15.00));
         servicios.add(new Servicio("104", "cambio de banda",20.00));
         servicios.add(new Servicio("105", "cambio respuestos",50.00));
+        // ORDENES TECNICOS
+        ordenes.add(new Orden(usuarios[1].nombre, "xxxxxxxxx",usuarios[1].nivel,"XXX-XXX","j", 0.00));
+        ordenes.add(new Orden(usuarios[3].nombre, "xxxxxxxxx",usuarios[3].nivel,"XXX-XXX","j", 0.00 ));
+        //ORDENES CLIENTES
+        ordenes.add(new Orden(clientes.get(0).codigo, "14-11-2022",clientes.get(0).getTipo(),"GTH-909", servicios.get(0).getNombre(), servicios.get(0).getPrecio()));
+        ordenes.add(new Orden(clientes.get(1).codigo, "04-12-2022",clientes.get(1).getTipo(),"RUO-987",servicios.get(1).getNombre(), servicios.get(1).getPrecio()));
+        ordenes.add(new Orden(clientes.get(0).codigo, "14-11-2022",clientes.get(0).getTipo(),"GTH-909", servicios.get(1).getNombre(), servicios.get(1).getPrecio()));
+        ordenes.add(new Orden(clientes.get(1).codigo, "04-12-2022",clientes.get(1).getTipo(),"RUO-987",servicios.get(3).getNombre(), servicios.get(3).getPrecio()));
 
-        //ORDENES
-        ordenes.add(new Orden(clientes.get(1).codigo, "14-11-2022",clientes.get(1).getTipo(),"GTH-9899","j" ));
+
         //PROOVEEDORES
         proveedores.add(new Proveedor("9877", "KIA", "Cuenca", "052771203"));
         proveedores.add(new Proveedor("9866", "Chevrolet", "Guayaquil", "05270878"));

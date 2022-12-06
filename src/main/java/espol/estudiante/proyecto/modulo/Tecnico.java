@@ -41,37 +41,43 @@ public class Tecnico extends Usuario {
         String codigoCliente = sc.nextLine();
 
         for (Cliente c : Sistema.getClientes()) {
-            System.out.println(c.getCodigo() + c.getNombre());
             if (c.getCodigo().equals(codigoCliente)) { //recorremos la lista y verificamos si el codigo ingresado esta presente en la lista clientes
                 System.out.println("Ingrese fecha de servicio (dd-mm-aaaa): ");
                 String fecha = sc.nextLine();
                 System.out.println("Ingrese tipo de vehículo (Solo el número) (1- automóvil, 2 motocicletas, 3- bus): ");
                 String tipo = sc.nextLine();
-
-
                 switch (tipo) {
                     case "1" -> tipo = "automóvil";
                     case "2" -> tipo = "motocicleta";
                     case "3" -> tipo = "bus";
                 }
 
-
                 System.out.println("Ingrese #Placa Del Vehículo: ");
                 String placa = sc.nextLine();
-                System.out.println("--- Servicios aplicados en el vehiculo: ---");
-                for (int i = 0; i < Sistema.getServicios().size(); i++) {
-                    System.out.println(Sistema.getServicios().get(i).toString());
-                }
                 String cond = "0";
                 while (cond.equals("0")) {
+                    for (Servicio s: Sistema.getServicios()) {
+                        System.out.println(s.toString());
+                    }
+                    System.out.println("--- Servicios aplicados en el vehiculo: ---");
                     System.out.println("Ingrese el codigo del servicio:");
-
                     String codigoServicio = sc.nextLine();
+                    double precio = 0.00;
+                    for (Servicio s: Sistema.getServicios()){
+                        if (s.getCodigo().equals(codigoServicio)){
+                            codigoServicio = s.getNombre();
+                            precio = s.getPrecio();
+                        }
+                    }
+                    Sistema.getOrdenes().add(new Orden(codigoCliente, fecha, tipo, placa, codigoServicio, precio));
+                    System.out.println("---- Servicio agregado correctamente ----:");
+                    System.out.println("Servicio de:"+ codigoServicio+" - "+ "$"+precio);
                     System.out.println("Si desea seguir agregando servicios pulse 0 \n Si ha terminado de agregar escriba -1");
                     cond = sc.nextLine();
 
                 }
-                Sistema.getOrdenes().add(new Orden(codigoCliente, fecha, tipo, placa, "h"));
+                menuTecnico();
+
 
             }
 
