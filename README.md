@@ -1,1 +1,2 @@
-# ProyectoPOO
+# Grupo6
+# Proyecto POO
