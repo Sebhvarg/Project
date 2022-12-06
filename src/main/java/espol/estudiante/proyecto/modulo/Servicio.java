@@ -1,10 +1,13 @@
 
 package espol.estudiante.proyecto.modulo;
 
-import static espol.estudiante.proyecto.modulo.Admin.administrarServicios;
+import espol.estudiante.proyecto.modulo.Terceros.Datos;
+import espol.estudiante.proyecto.modulo.Usuarios.Sistema;
+
+import static espol.estudiante.proyecto.modulo.Usuarios.Admin.administrarServicios;
 import java.util.Scanner;
 
-public class Servicio extends Datos{
+public class Servicio extends Datos {
     private Double precio;
 
     public Servicio( String codigo,String nombre, Double precio) {
