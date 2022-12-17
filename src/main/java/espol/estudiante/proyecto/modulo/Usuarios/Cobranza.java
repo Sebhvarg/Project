@@ -80,14 +80,17 @@ public class Cobranza extends Usuario {
                     }
 
                 }
+                if (total == 0.0){System.out.println("El cliente no tiene facturas para el mes de: "+ mesN);}
                 Factura f = new Factura(codigo, c.getNombre(), mesN,anio, total);
                 System.out.println("Total $"+ total);
                 System.out.println(f.toString());
-                break;
 
             }
 
         }
+        System.out.println("--- Haga click para continuar");
+        sc.nextLine();
+        menuCobranza();//se ejecutara segun la opcion que elija el usuario
 
     }
     public static void  reporteIngresosPorServicios(){
